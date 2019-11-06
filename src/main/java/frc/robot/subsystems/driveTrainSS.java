@@ -7,22 +7,37 @@
 
 package frc.robot.subsystems;
 
+import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
+import frc.robot.commands.tankDriver;
 
 /**
  * Add your docs here.
  */
 public class driveTrainSS extends Subsystem {
-  TalonSRX motorleft1 = new TalonSRX(RobotMap.motorIDLeft);
+  private TalonSRX motorLeft1 = new TalonSRX(RobotMap.motorIDLeft1);
+  private TalonSRX motorLeft2 = new TalonSRX(RobotMap.motorIDLeft2);
+  private TalonSRX motorRight1 = new TalonSRX(RobotMap.motorIDRight1);
+  private TalonSRX motorRight2 = new TalonSRX(RobotMap.motorIDRight2);
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
   @Override
   public void initDefaultCommand() {
     // Set the default command for a subsystem here.
-    // setDefaultCommand(new MySpecialCommand());
+    setDefaultCommand(new tankDriver());
+  }
+
+  public void setLeftMotors(double speed) {
+    motorLeft1.set(ControlMode.PercentOutput, -speed);
+    motorLeft2.set(ControlMode.PercentOutput, -speed);
+  }
+
+  public void setRightMotors(double speed) {
+    motorRight1.set(ControlMode.PercentOutput, speed);
+    motorRight2.set(ControlMode.PercentOutput, speed);
   }
 }
