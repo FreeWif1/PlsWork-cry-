@@ -17,7 +17,7 @@ public class tankDriver extends Command {
     requires(Robot.driveTrain);
   }
 
-  // Called just before this Command runs the first time
+  // Called just before this Command runs the first time (Charlie added this for testing purposes)
   @Override
   protected void initialize() {
 
