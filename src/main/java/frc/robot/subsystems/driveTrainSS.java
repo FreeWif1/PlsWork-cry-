@@ -10,6 +10,7 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
+import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import frc.robot.commands.tankDriver;
@@ -20,9 +21,9 @@ import frc.robot.commands.tankDriver;
  */
 public class driveTrainSS extends Subsystem {
   private TalonSRX motorLeft1 = new TalonSRX(RobotMap.motorIDLeft1);
-  private TalonSRX motorLeft2 = new TalonSRX(RobotMap.motorIDLeft2);
+  private Victor motorLeft2 = new Victor(RobotMap.motorIDLeft2);
   private TalonSRX motorRight1 = new TalonSRX(RobotMap.motorIDRight1);
-  private TalonSRX motorRight2 = new TalonSRX(RobotMap.motorIDRight2);
+  private Victor motorRight2 = new Victor(RobotMap.motorIDRight2);
   // Put methods for controlling this subsystem
   // here. Call these from Commands.
 
@@ -34,11 +35,11 @@ public class driveTrainSS extends Subsystem {
 
   public void setLeftMotors(double speed) {
     motorLeft1.set(ControlMode.PercentOutput, -speed);
-    motorLeft2.set(ControlMode.PercentOutput, -speed);
+    motorLeft2.set( -speed);
   }
 
   public void setRightMotors(double speed) {
     motorRight1.set(ControlMode.PercentOutput, speed);
-    motorRight2.set(ControlMode.PercentOutput, speed);
+    motorRight2.set(speed);
   }
 }
